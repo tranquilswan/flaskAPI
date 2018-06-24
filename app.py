@@ -1,7 +1,8 @@
 from flask import Flask
 from flask import jsonify
 from flask import request
-from flask import abort
+#from flask import abort
+
 app = Flask(__name__)
 
 #defining the dictionary to hold object
@@ -68,9 +69,9 @@ def removeStock(ticker):
                      if(stock['ticker']==ticker)]
     if len(stockToDelete) == 0:
         return jsonify({'response': 'Le Failure!'})
-        #abort(404)
+        #abort(404) # displays a different message
     stockDB.remove(stockToDelete[0])
-    #return jsonify({'STOCKS':stockDB})
+    #return jsonify({'STOCKS':stockDB}) # return the dict now
     return jsonify({'response': 'Le Success!'})
 
 
